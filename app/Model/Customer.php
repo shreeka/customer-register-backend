@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Model;
+
 final class Customer
 {
     private string $id;
@@ -10,9 +11,14 @@ final class Customer
     private string $email;
 
 
-    public function getFirstName():string
+    public function getFirstName(): string
     {
         return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): void
+    {
+        $this->firstName = $firstName;
     }
 
     public function getId(): string
@@ -25,12 +31,7 @@ final class Customer
         $this->id = $id;
     }
 
-    public function setFirstName(string $firstName): void
-    {
-        $this->firstName = $firstName;
-    }
-
-    public function getLastName():string
+    public function getLastName(): string
     {
         return $this->lastName;
     }
@@ -41,7 +42,7 @@ final class Customer
     }
 
 
-    public function getDob():string
+    public function getDob(): string
     {
         return $this->dob;
     }
@@ -53,7 +54,7 @@ final class Customer
     }
 
 
-    public function getEmail():string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -80,7 +81,6 @@ final class Customer
 
         return $this;
     }
-
 
 
 }

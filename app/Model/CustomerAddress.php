@@ -21,12 +21,12 @@ final class CustomerAddress
         $this->id = $id;
     }
 
-    public function getCustomerId(): int
+    public function getCustomerId(): string
     {
         return $this->customerId;
     }
 
-    public function setCustomerId(int $customerId): void
+    public function setCustomerId(string $customerId): void
     {
         $this->customerId = $customerId;
     }
@@ -70,6 +70,7 @@ final class CustomerAddress
     {
         $this->cityName = $cityName;
     }
+
     public function fromArray(array $data): CustomerAddress
     {
         $id = $data['id'] ?? '';

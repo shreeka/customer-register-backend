@@ -7,7 +7,6 @@ use App\Model\Customer;
 use App\Model\CustomerAddress;
 use PDO;
 use PDOException;
-use RuntimeException;
 
 final class CustomerRepository implements CustomerRepositoryInterface
 {
@@ -15,7 +14,7 @@ final class CustomerRepository implements CustomerRepositoryInterface
     {
     }
 
-    public function insertCustomer(Customer $customer):string
+    public function insertCustomer(Customer $customer): string
     {
         $query = "INSERT INTO customers (first_name, last_name, dob, email) VALUES (?,?,?,?)";
         try {
@@ -24,14 +23,14 @@ final class CustomerRepository implements CustomerRepositoryInterface
 
             //return last inserted id for customer address insertion
             return $this->pdo->lastInsertId();
-        }catch (PDOException $exception){
-            JsonResponse::send(['status' => 'error', 'message' => 'Failure inserting into customers table: '.$exception->getMessage()],500);
-             return false;
+        } catch (PDOException $exception) {
+            JsonResponse::send(['status' => 'error', 'message' => 'Failure inserting into customers table: ' . $exception->getMessage()], 500);
+            return false;
         }
 
     }
 
-    public function insertCustomerAddress(CustomerAddress $customerAddress):void
+    public function insertCustomerAddress(CustomerAddress $customerAddress): void
     {
         $query = "INSERT INTO customer_addresses (customer_id, street_name, house_number, postal_code, city_name) VALUES (?,?,?,?,?)";
         try {
@@ -40,8 +39,8 @@ final class CustomerRepository implements CustomerRepositoryInterface
 
             // Success message after customer and customer addresses entered successfully
             JsonResponse::send(['status' => 'success', 'message' => 'Customer registered successfully']);
-        }catch (PDOException $exception){
-            JsonResponse::send(['status' => 'error', 'message' => 'Failure inserting into customer_addresses table: '.$exception->getMessage()],500);
+        } catch (PDOException $exception) {
+            JsonResponse::send(['status' => 'error', 'message' => 'Failure inserting into customer_addresses table: ' . $exception->getMessage()], 500);
         }
 
     }
@@ -55,12 +54,11 @@ final class CustomerRepository implements CustomerRepositoryInterface
         try {
             $stmt = $this->pdo->query($query);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }catch (PDOException $exception){
-            JsonResponse::send(['status' => 'error', 'message' => 'Failure fetching customers: '.$exception->getMessage()],500);
+        } catch (PDOException $exception) {
+            JsonResponse::send(['status' => 'error', 'message' => 'Failure fetching customers: ' . $exception->getMessage()], 500);
             return false;
         }
     }
-
 
 
 }

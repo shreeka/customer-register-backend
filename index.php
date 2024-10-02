@@ -44,11 +44,11 @@ if ($params) {
         if (method_exists($controller, $action)) {
             $controller->$action();
         }else {
-            JsonResponse::send(['status' => 'error', 'message' => $action.' method does not exist in '.$controllerClass], 404);
+            JsonResponse::send(['status' => 'error', 'message' => "$action method does not exist in $controllerClass"], 404);
         }
 
     } else {
-        JsonResponse::send(['status' => 'error', 'message' => $controllerClass.' does not exist'], 404);
+        JsonResponse::send(['status' => 'error', 'message' => "$controllerClass does not exist"], 404);
     }
 } else {
     // Handle other routes

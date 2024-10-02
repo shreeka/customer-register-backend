@@ -4,9 +4,7 @@ namespace App\Controller;
 
 use App\Model\Customer;
 use App\Model\CustomerAddress;
-use App\Repository\CustomerRepository;
 use App\Repository\CustomerRepositoryInterface;
-use PDO;
 
 final class CustomerController
 {
@@ -18,10 +16,10 @@ final class CustomerController
     {
         // Get data from the POST request
         $customerData = [
-            'first_name' =>  $_POST['first_name'],
-            'last_name' =>  $_POST['last_name'],
-            'dob' =>  $_POST['dob'],
-            'email' =>  $_POST['email'],
+            'first_name' => $_POST['first_name'],
+            'last_name' => $_POST['last_name'],
+            'dob' => $_POST['dob'],
+            'email' => $_POST['email'],
         ];
 
         $customer = new Customer();
@@ -55,7 +53,4 @@ final class CustomerController
         echo json_encode($customers);
 
     }
-
-
-
 }
